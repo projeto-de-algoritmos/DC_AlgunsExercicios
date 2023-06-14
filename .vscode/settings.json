@@ -1,0 +1,21 @@
+{
+    "clang-format.executable": "clang-format-10",
+    "editor.formatOnSave": true,
+    "testMate.cpp.test.advancedExecutables": [
+        {
+            // https://github.com/matepek/vscode-catch2-test-adapter/blob/master/documents/configuration/test.advancedExecutables.md#testgrouping
+            "pattern": "test",
+            "doctest": {
+                "testGrouping": {
+                    "groupByExecutable": {
+                        "label": "${filename}",
+                        "description": "${relDirpath}/",
+                        "groupByTags": {
+                            "label": "${tags}"
+                        },
+                    },
+                }
+            },
+        }
+    ],
+}
