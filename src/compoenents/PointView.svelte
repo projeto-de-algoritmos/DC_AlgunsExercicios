@@ -1,21 +1,21 @@
 <script lang="ts">
+    // FIXME: x e y são valores percentuais
     export let x = 0;
     export let y = 0;
     export let id = 0;
-    export let width = 4;
-    export let height = 4;
-
-    // div handlers
-    // on:click={() => console.log("fui clicado", id)}
-    // on:keydown={() => {}}
+    export let radius = 5;
+    let width = radius;
+    let height = radius;
 </script>
 
 <div
     class="point"
     style:width="{width}px"
     style:height="{height}px"
-    style:top="{x}%"
-    style:left="{y}%"
+    style:left="{x - radius}px"
+    style:top="{y - radius}px"
+    on:click={() => console.log("Ponto", id, x, y)}
+    on:keydown={() => {}}
 />
 
 <style>
