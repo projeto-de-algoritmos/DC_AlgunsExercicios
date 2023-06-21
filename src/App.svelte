@@ -16,6 +16,7 @@
   const paddingV = 15;
   const maxNumberOfPoints = 15;
   const initialNumberOfPoints = 5;
+  
 
   let mountDate: Date = new Date();
   let numberOfPoints = initialNumberOfPoints;
@@ -27,7 +28,7 @@
 
   let timerStr = "0h0m0s0ms";
   let listOfTimes: Date[] = [];
-
+  let status = ''
   let selectedPoints: Point[] = [];
 
   function generatePoints(numberOfPoints: number) {
@@ -70,6 +71,8 @@
 
       if (selectedPointsDistance <= realClosestPair.distance) {
         console.log("Acertou miseravi");
+        status = 'Acertou!'
+        setTimeout(() => { status = ''}, 2000)
         numberOfPoints++;
         generatePoints(numberOfPoints);
         selectedPoints = [];
@@ -90,6 +93,9 @@
         }
       } else {
         console.log("Errrouu!!!");
+        status = 'Errou!'
+        setTimeout(() => { status = ''}, 2000)
+
         selectedPoints = [];
       }
     } else {
@@ -138,6 +144,7 @@
       {#each points as p, i}
         <PointView id={i} point={p} {handleClick} />
       {/each}
+      <strong>{status}</strong>
     </PointsContainer>
   </div>
 </main>
