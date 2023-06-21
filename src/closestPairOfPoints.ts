@@ -12,13 +12,14 @@ export class Point {
     constructor(readonly x: number, readonly y: number) { }
 };
 
-function distance(a: Point, b: Point): number {
+export function distance(a: Point, b: Point): number {
     return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2)
 }
 
-export function closestPair_brute(points: Point[], size: number): ClosestPair {
+export function closestPair_brute(points: Point[]): ClosestPair {
     let min = Number.POSITIVE_INFINITY
     let dist = 0
+    const size = points.length
     let p1 = new Point(0, 0)
     let p2 = new Point(0, 0)
 
@@ -68,7 +69,7 @@ function stripClosest(strip: Point[], size: number, d: number, pair: Pair): Clos
 
 function _closest(points: Point[], size: number): ClosestPair {
     if (size <= 3) {
-        return closestPair_brute(points, size);
+        return closestPair_brute(points);
     }
 
     const mid = Math.floor(size / 2)
@@ -100,7 +101,7 @@ function _closest(points: Point[], size: number): ClosestPair {
     }
 }
 
-export function closestPair(points: Point[], size: number) {
+export function getClosestPair(points: Point[]) {
     points.sort(compareX)
-    return _closest(points, size)
+    return _closest(points, points.length)
 }
