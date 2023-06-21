@@ -145,7 +145,7 @@
       </ul>
 
       <p>
-        Repositório com códdigo fonte:
+        Repositório com código fonte:
         <a href="https://github.com/projeto-de-algoritmos/DC_ParDePontos">
           aqui</a
         >.

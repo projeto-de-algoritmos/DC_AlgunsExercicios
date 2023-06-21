@@ -5,6 +5,9 @@
 **Conteúdo da Disciplina**: Dividir e Conquistar
 
 
+A apresentação em vídeo do projeto está em [./pa-dc.mp4](./pa-dc.mp4). Mas
+você pode assistir também pelo [YouTube](https://youtu.be/fz3q6JXscR0).
+
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
