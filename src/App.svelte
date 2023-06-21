@@ -14,7 +14,7 @@
   const width = 500;
   const paddingH = 15;
   const paddingV = 15;
-  const maxNumberOfPoints = 5;
+  const maxNumberOfPoints = 15;
   const initialNumberOfPoints = 5;
 
   let mountDate: Date = new Date();
