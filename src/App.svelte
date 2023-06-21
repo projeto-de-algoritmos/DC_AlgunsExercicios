@@ -92,6 +92,7 @@
               "!"
           );
           numberOfPoints = initialNumberOfPoints;
+          generatePoints(numberOfPoints);
         }
       } else {
         console.log("Errrouu!!!");
