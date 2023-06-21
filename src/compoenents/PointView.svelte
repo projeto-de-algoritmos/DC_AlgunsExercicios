@@ -8,10 +8,6 @@
 
     let width = radius;
     let height = radius;
-
-
-
-    
 </script>
 
 <div
@@ -32,7 +28,8 @@
         border: 3px solid grey;
         background: white;
         transform: scale(1.0);
-        transition: all ease-in-out 0.2s;
+        /* transition: x ease-in-out 0.2s, y ease-in-out 0.2s, scale ease-in-out 0.1s; */
+        transition: all ease-in-out 0.3s;
     }
 
     .point:hover {
