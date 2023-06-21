@@ -1,7 +1,11 @@
-export type ClosestPair = {
-    distance: number,
+export type Pair = {
     p1: Point,
     p2: Point,
+}
+
+export type ClosestPair = {
+    distance: number,
+    pair: Pair
 }
 
 export class Point {
@@ -29,10 +33,7 @@ export function closestPair_brute(points: Point[], size: number): ClosestPair {
         }
     }
 
-    return {
-        distance: min,
-        p1, p2
-    }
+    return { distance: min, pair: { p1, p2 } }
 }
 
 function compareX(a: Point, b: Point): number {
@@ -43,20 +44,25 @@ function compareY(a: Point, b: Point): number {
     return a.y - b.y
 }
 
-function stripClosest(strip: Point[], size: number, d: number) {
+function stripClosest(strip: Point[], size: number, d: number, pair: Pair): ClosestPair {
     strip.sort(compareY);
     let min = d;
     let dist = 0
+    let p1 = pair.p1
+    let p2 = pair.p2
 
     for (let i = 0; i < size; i++) {
         for (let j = i + 1; j < size && (strip[j].y - strip[i].y) < min; j++) {
             dist = distance(strip[i], strip[j])
             if (dist < min) {
                 min = dist;
+                p1 = strip[i]
+                p2 = strip[j]
             }
         }
     }
-    return min;
+
+    return { distance: min, pair: { p1, p2 } };
 }
 
 
@@ -71,6 +77,9 @@ function _closest(points: Point[], size: number): ClosestPair {
     const pairLeft = _closest(points, mid);
     const pairRight = _closest(points.slice(mid), size - mid);
     const d = Math.min(pairLeft.distance, pairRight.distance);
+    const firstPair = pairLeft.distance < pairRight.distance
+        ? pairLeft.pair
+        : pairRight.pair
 
     const strip: Point[] = [];
     let j = 0;
@@ -81,10 +90,13 @@ function _closest(points: Point[], size: number): ClosestPair {
         }
     }
 
+    const pair = stripClosest(strip, j, d, firstPair)
     return {
-        distance: Math.min(d, stripClosest(strip, j, d)),
-        p1: {x: 0, y: 0},
-        p2: {x: 0, y: 0}
+        distance: Math.min(d, pair.distance),
+        pair: {
+            p1: pair.pair.p1, 
+            p2: pair.pair.p2,
+        }
     }
 }
 
