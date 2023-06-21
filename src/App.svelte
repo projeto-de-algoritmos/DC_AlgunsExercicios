@@ -16,7 +16,6 @@
   const paddingV = 15;
   const maxNumberOfPoints = 15;
   const initialNumberOfPoints = 5;
-  
 
   let mountDate: Date = new Date();
   let numberOfPoints = initialNumberOfPoints;
@@ -28,7 +27,7 @@
 
   let timerStr = "0h0m0s0ms";
   let listOfTimes: Date[] = [];
-  let status = ''
+  let status = "";
   let selectedPoints: Point[] = [];
 
   function generatePoints(numberOfPoints: number) {
@@ -71,8 +70,10 @@
 
       if (selectedPointsDistance <= realClosestPair.distance) {
         console.log("Acertou miseravi");
-        status = 'Acertou!'
-        setTimeout(() => { status = ''}, 2000)
+        status = "Acertou!";
+        setTimeout(() => {
+          status = "";
+        }, 2000);
         numberOfPoints++;
         generatePoints(numberOfPoints);
         selectedPoints = [];
@@ -82,19 +83,22 @@
         listOfTimes.push(diff);
         listOfTimes = listOfTimes;
 
-        console.log(points.length, maxNumberOfPoints)
+        console.log(points.length, maxNumberOfPoints);
         if (points.length >= maxNumberOfPoints) {
           console.log("Você venceu!");
           alert(
             "Parabéns, você venceu o jogo em " +
-              dateToFormattedString(listOfTimes.at(-1)) + "!"
+              dateToFormattedString(listOfTimes.at(-1)) +
+              "!"
           );
           numberOfPoints = initialNumberOfPoints;
         }
       } else {
         console.log("Errrouu!!!");
-        status = 'Errou!'
-        setTimeout(() => { status = ''}, 2000)
+        status = "Errou!";
+        setTimeout(() => {
+          status = "";
+        }, 2000);
 
         selectedPoints = [];
       }
@@ -122,6 +126,13 @@
 
   <div>
     <aside>
+      <br />
+      <br />
+      <br />
+      <p>
+        <strong> Clique nos círculos mais próximos até chegar em 15, </strong>
+        <em>O mais rápido que puder!</em>
+      </p>
       <p>
         Tempo: {timerStr}
       </p>
@@ -133,10 +144,10 @@
       </ul>
 
       <p>
-        Leia as instruções do jogo
+        Repositório com códdigo fonte:
         <a href="https://github.com/projeto-de-algoritmos/DC_ParDePontos">
-          aqui
-        </a>.
+          aqui</a
+        >.
       </p>
     </aside>
 
@@ -153,6 +164,11 @@
   div {
     display: flex;
     justify-content: space-between;
+  }
+
+  aside {
+    padding: 15px;
+    max-width: 300px;
   }
 
   ul {
