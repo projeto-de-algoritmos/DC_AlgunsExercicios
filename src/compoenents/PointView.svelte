@@ -1,20 +1,27 @@
 <script lang="ts">
-    // FIXME: x e y são valores percentuais
-    export let x = 0;
-    export let y = 0;
+    import { Point } from "../closestPairOfPoints";
+
+    export let point = new Point(0, 0)
     export let id = 0;
-    export let radius = 5;
+    export let radius = 9;
+    export let handleClick: (point: Point) => void
+
     let width = radius;
     let height = radius;
+
+
+
+    
 </script>
 
 <div
+    id="point-{id}"
     class="point"
     style:width="{width}px"
     style:height="{height}px"
-    style:left="{x - radius}px"
-    style:top="{y - radius}px"
-    on:click={() => console.log("Ponto", id, x, y)}
+    style:left="{point.x - radius}px"
+    style:top="{point.y - radius}px"
+    on:click={() => handleClick(point)}
     on:keydown={() => {}}
 />
 
@@ -22,7 +29,13 @@
     .point {
         position: absolute;
         border-radius: 50%;
-        border: 2px solid grey;
+        border: 3px solid grey;
         background: white;
+        transform: scale(1.0);
+        transition: all ease-in-out 0.2s;
+    }
+
+    .point:hover {
+        transform: scale(1.3);
     }
 </style>

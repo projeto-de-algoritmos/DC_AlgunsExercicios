@@ -95,7 +95,7 @@ function _closest(points: Point[], size: number): ClosestPair {
     return {
         distance: Math.min(d, pair.distance),
         pair: {
-            p1: pair.pair.p1, 
+            p1: pair.pair.p1,
             p2: pair.pair.p2,
         }
     }

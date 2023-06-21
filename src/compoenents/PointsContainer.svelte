@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
+    export let numberOfPoints = 0;
     export let width = 500;
     export let height = 500;
 
@@ -26,7 +27,10 @@
 </script>
 
 <div>
-    <p>Clicado {text}</p>
+    <p>
+        N° de Pontos: {numberOfPoints}
+        <!-- | Clicado {text} -->
+    </p>
     <div
         class="points-container"
         on:click={handleClick}
